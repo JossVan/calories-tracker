@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { Activity } from "../types";
 import CalorieDisplay from "./CalorieDisplay";
+import { useActivity } from "../hooks/useActivity";
 
-type CalorieTrackerProps = {
-  activities: Activity[];
-};
-export default function CalorieTracker({ activities }: CalorieTrackerProps) {
+export default function CalorieTracker() {
+  const { state } = useActivity();
+  const activities: Activity[] = state.activities;
   const caloriesConsumed = useMemo(
     () =>
       activities.reduce(
